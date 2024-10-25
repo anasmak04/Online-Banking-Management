@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment.prod";
 import {Observable} from "rxjs";
 import {UserResponse} from "../../models/user-response.interface";
+import {UserRequest} from "../../models/user-request.interafce";
 @Injectable({
   providedIn: 'root'
 })
@@ -15,9 +16,14 @@ export class UserService {
     return this.http.get<UserResponse[]>(this.USER_API+"all");
   }
 
-  save(userRequest : string){
-    return this.http.post(this.USER_API,userRequest);
+  findById(userId: number): Observable<UserResponse> {
+    return this.http.get<UserResponse>(`${this.USER_API}/${userId}`);
   }
+
+  save(userRequest: UserRequest): Observable<UserResponse> {
+    return this.http.post<UserResponse>(this.USER_API+"init", userRequest);
+  }
+
 
   update(userRequest : string){
     return this.http.put(this.USER_API,userRequest);
