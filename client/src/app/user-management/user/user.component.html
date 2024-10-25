@@ -1,0 +1,15 @@
+<div *ngIf="users$ | async as users; else loading">
+  <h2>User List</h2>
+  <ul>
+    <li *ngFor="let user of users">
+      <p><strong>ID:</strong> {{ user.id }}</p>
+      <p><strong>Username:</strong> {{ user.username }}</p>
+      <p><strong>Email:</strong> {{ user.email }}</p>
+      <p><strong>Role:</strong> {{ user.role || 'No role assigned' }}</p>
+      <hr>
+    </li>
+  </ul>
+</div>
+<ng-template #loading>
+  <p>Loading users...</p>
+</ng-template>
