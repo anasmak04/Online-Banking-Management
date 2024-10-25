@@ -13,8 +13,12 @@ import java.util.List;
 public interface BillMapper {
 
     BillMapper INSTANCE = Mappers.getMapper(BillMapper.class);
-    @Mapping(source = "user.id", target = "userId")
+
+    @Mapping(target = "userId", source = "user.id")
     BillDTO toDTO(Bill bill);
+
+
+    @Mapping(target = "id", ignore = true)
     @Mapping(target = "user", ignore = true)
     Bill toEntity(BillRequest billRequest);
 

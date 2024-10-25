@@ -24,6 +24,9 @@ public class UserRequest {
     @Email(message = "Email should be valid")
     private String email;
 
+    @NotBlank(message = "Password cannot be blank")
+    private String password;
+
     @NotNull(message = "Role cannot be null")
     private Role role;
 

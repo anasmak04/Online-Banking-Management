@@ -6,6 +6,7 @@ import com.bankapp.server.domain.request.UserRequest;
 import com.bankapp.server.mapper.UserMapper;
 import com.bankapp.server.repository.UserRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,9 +18,10 @@ public class PublicV1UserService {
 
     private final UserRepository userRepository;
     private final UserMapper userMapper;
+    private final PasswordEncoder passwordEncoder;
 
     public UserDTO save(UserRequest userRequest){
-        User user = userMapper.toEntity(userRequest);
+        User user = userMapper.toEntity(userRequest,passwordEncoder);
         return  userMapper.toDTO(userRepository.save(user));
     }
 

@@ -14,8 +14,10 @@ public interface AccountMapper {
 
     AccountMapper INSTANCE = Mappers.getMapper(AccountMapper.class);
 
-    @Mapping(source = "user.id", target = "userId")
+    @Mapping(target = "userId", source = "user.id")
     AccountDTO toDTO(Account account);
+
+    @Mapping(target = "id", ignore = true)
     @Mapping(target = "user", ignore = true)
     Account toEntity(AccountRequest accountRequest);
 

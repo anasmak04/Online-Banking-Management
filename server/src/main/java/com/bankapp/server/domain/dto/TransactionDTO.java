@@ -1,5 +1,6 @@
 package com.bankapp.server.domain.dto;
 
+import com.bankapp.server.domain.enums.TransactionType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,6 +13,6 @@ import lombok.NoArgsConstructor;
 public class TransactionDTO {
     private Long id;
     private Double amount;
-    private String type;
+    private TransactionType type;
     private Long accountId;
 }
