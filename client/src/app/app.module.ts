@@ -4,11 +4,12 @@ import { HttpClientModule } from "@angular/common/http";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
-import { UserModule } from "./user-management/user.module";
+import { UserModule } from "./dashboard/user-management/user.module";
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { isDevMode } from '@angular/core';
 import {EffectsModule} from "@ngrx/effects";
-
+import {AuthModule} from "./auth/auth.module";
+import {LayoutsModule} from "./dashboard/layouts/layouts.module";
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +26,8 @@ import {EffectsModule} from "@ngrx/effects";
       logOnly: !isDevMode(),
       autoPause: true,
     }),
+    AuthModule,
+    LayoutsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

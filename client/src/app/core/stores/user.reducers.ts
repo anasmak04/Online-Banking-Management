@@ -1,4 +1,4 @@
-import { UserState } from '../../models/user-state.interface';
+import { UserState } from '../models/user-state.interface';
 import { createFeature, createReducer, on } from '@ngrx/store';
 import { UserActions } from './user.actions';
 
