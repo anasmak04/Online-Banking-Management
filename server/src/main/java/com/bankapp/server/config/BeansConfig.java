@@ -16,7 +16,6 @@ public class BeansConfig {
 
     private final UserDetailsService userDetailsService;
 
-
     @Bean
     public AuthenticationProvider authenticationProvider(PasswordEncoder passwordEncoder) {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
@@ -24,7 +23,6 @@ public class BeansConfig {
         authProvider.setPasswordEncoder(passwordEncoder());
         return authProvider;
     }
-
 
     @Bean
     public PasswordEncoder passwordEncoder() {
