@@ -1,27 +1,21 @@
 package com.bankapp.server.domain.entities;
 
-import com.bankapp.server.domain.enums.TransactionStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 @Data
-@Entity
-@Table(name = "loans")
-@AllArgsConstructor
 @NoArgsConstructor
-@Builder
-public class Loan {
+@AllArgsConstructor
+@Entity
+@Table(name = "tokens")
+public class Token {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Double principal;
-    private Double interestRate;
-    private int termMonths;
-    private boolean approved;
-
+    private String token;
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;

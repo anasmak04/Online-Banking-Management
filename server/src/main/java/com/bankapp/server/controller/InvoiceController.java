@@ -1,8 +1,8 @@
 package com.bankapp.server.controller;
 
-import com.bankapp.server.domain.dto.BillDTO;
-import com.bankapp.server.domain.request.BillRequest;
-import com.bankapp.server.service.PublicV1BillService;
+import com.bankapp.server.domain.dto.InvoiceDTO;
+import com.bankapp.server.domain.request.InvoiceRequest;
+import com.bankapp.server.service.PublicV1InvoiceService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -17,29 +17,29 @@ import static org.springframework.http.HttpStatus.OK;
 @RequestMapping("/api/bill")
 @CrossOrigin(origins = "http://localhost:4200")
 @AllArgsConstructor
-public class BillController {
+public class InvoiceController {
 
-    private final PublicV1BillService publicV1BillService;
+    private final PublicV1InvoiceService publicV1InvoiceService;
 
     @PostMapping("/init")
     @ResponseStatus(HttpStatus.CREATED)
-    public BillDTO save(@RequestBody @Valid final BillRequest billRequest) {
-        return publicV1BillService.save(billRequest);
+    public InvoiceDTO save(@RequestBody @Valid final InvoiceRequest invoiceRequest) {
+        return publicV1InvoiceService.save(invoiceRequest);
     }
 
     @GetMapping("/all")
-    public List<BillDTO> findAll() {
-        return publicV1BillService.findAll();
+    public List<InvoiceDTO> findAll() {
+        return publicV1InvoiceService.findAll();
     }
 
     @DeleteMapping("/delete/{id}")
     public void delete(@PathVariable final Long id) {
-        publicV1BillService.delete(id);
+        publicV1InvoiceService.delete(id);
     }
 
     @GetMapping("/{id}")
     @ResponseStatus(OK)
-    public Optional<BillDTO> findById(@PathVariable final Long id) {
-        return publicV1BillService.findById(id);
+    public Optional<InvoiceDTO> findById(@PathVariable final Long id) {
+        return publicV1InvoiceService.findById(id);
     }
 }

@@ -1,11 +1,7 @@
 package com.bankapp.server.controller;
 
-import com.bankapp.server.domain.dto.BillDTO;
 import com.bankapp.server.domain.dto.LoanDTO;
-import com.bankapp.server.domain.entities.Loan;
-import com.bankapp.server.domain.request.BillRequest;
 import com.bankapp.server.domain.request.LoanRequest;
-import com.bankapp.server.service.PublicV1BillService;
 import com.bankapp.server.service.PublicV1LoanService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;

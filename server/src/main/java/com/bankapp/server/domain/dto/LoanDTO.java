@@ -1,6 +1,6 @@
 package com.bankapp.server.domain.dto;
 
-import com.bankapp.server.domain.enums.Status;
+import com.bankapp.server.domain.enums.TransactionStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,6 +14,7 @@ public class LoanDTO {
     private Long id;
     private Double amount;
     private Double interestRate;
-    private Status status;
+    private int termMonths;
+    private boolean approved;
     private Long userId;
 }

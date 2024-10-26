@@ -1,6 +1,6 @@
 package com.bankapp.server.domain.request;
 
-import com.bankapp.server.domain.enums.Status;
+import com.bankapp.server.domain.enums.TransactionStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,8 +23,7 @@ public class LoanRequest {
     @Positive(message = "Interest rate must be a positive value")
     private Double interestRate;
 
-    @NotNull(message = "Status cannot be null")
-    private Status status;
+    private boolean approved;
 
     @NotNull(message = "User ID cannot be null")
     private Long userId;
