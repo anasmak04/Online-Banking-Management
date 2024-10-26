@@ -2,7 +2,9 @@ package com.bankapp.server.service;
 
 import com.bankapp.server.domain.dto.UserDTO;
 import com.bankapp.server.domain.entities.User;
+import com.bankapp.server.domain.request.LoginRequest;
 import com.bankapp.server.domain.request.RegistrationRequest;
+import com.bankapp.server.domain.response.LoginResponse;
 import com.bankapp.server.mapper.UserMapper;
 import com.bankapp.server.repository.UserRepository;
 import com.bankapp.server.service.validation.UserValidationService;
@@ -24,4 +26,10 @@ public class AuthenticationService {
     public UserDTO register(RegistrationRequest registrationRequest) {
        return publicV1UserService.createUser(registrationRequest);
     }
+
+    public LoginResponse login(LoginRequest loginRequest) {
+        return publicV1UserService.login(loginRequest);
+    }
+
+
 }

@@ -4,8 +4,10 @@ import com.bankapp.server.domain.dto.TokenDTO;
 import com.bankapp.server.domain.dto.UserDTO;
 import com.bankapp.server.domain.entities.Role;
 import com.bankapp.server.domain.entities.User;
+import com.bankapp.server.domain.request.LoginRequest;
 import com.bankapp.server.domain.request.RegistrationRequest;
 import com.bankapp.server.domain.request.UserRequest;
+import com.bankapp.server.domain.response.LoginResponse;
 import com.bankapp.server.mapper.TokenMapper;
 import com.bankapp.server.mapper.UserMapper;
 import com.bankapp.server.repository.RoleRepository;
@@ -62,6 +64,33 @@ public class PublicV1UserService {
 
         return userDTO;
     }
+
+
+    public LoginResponse login(@NonNull final LoginRequest loginRequest) {
+
+        userValidationService.validateLoginCredentials(loginRequest.getEmail(), loginRequest.getPassword());
+
+
+        User user = userRepository.findByEmail(loginRequest.getEmail())
+                .orElseThrow(() -> new RuntimeException("User not found with email: " + loginRequest.getEmail()));
+
+
+        String token = jwtService.generateToken(user, user.getId());
+
+
+        saveUserToken(token, user);
+
+
+        UserDTO userDTO = userMapper.toDTO(user);
+        LoginResponse loginResponse = LoginResponse.builder()
+                .token(token)
+                .expiresIn(3600)
+                .user(userDTO)
+                .build();
+
+        return loginResponse;
+    }
+
 
     public void saveUserToken(String accessToken, User user) {
         TokenDTO token = TokenDTO.builder()

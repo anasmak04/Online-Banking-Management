@@ -1,8 +1,10 @@
 package com.bankapp.server.controller;
 
 import com.bankapp.server.domain.dto.UserDTO;
+import com.bankapp.server.domain.request.LoginRequest;
 import com.bankapp.server.domain.request.RegistrationRequest;
 import com.bankapp.server.domain.request.UserRequest;
+import com.bankapp.server.domain.response.LoginResponse;
 import com.bankapp.server.service.AuthenticationService;
 import com.bankapp.server.service.PublicV1UserService;
 import lombok.AllArgsConstructor;
@@ -23,5 +25,11 @@ public class AuthController {
     @ResponseStatus(HttpStatus.CREATED)
     public UserDTO register(@RequestBody @Valid final RegistrationRequest registrationRequest) {
          return  authenticationService.register(registrationRequest);
+    }
+
+    @PostMapping("/login")
+    @ResponseStatus(HttpStatus.CREATED)
+    public LoginResponse login(@RequestBody @Valid final LoginRequest loginRequest) {
+        return  authenticationService.login(loginRequest);
     }
 }
