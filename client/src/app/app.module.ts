@@ -9,7 +9,11 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { isDevMode } from '@angular/core';
 import {EffectsModule} from "@ngrx/effects";
 import {AuthModule} from "./auth/auth.module";
-import {LayoutsModule} from "./dashboard/layouts/layouts.module";
+import {LayoutsModule} from "./shared/layouts/layouts.module";
+import {AccountModule} from "./dashboard/account-management/account.module";
+import {TransactionModule} from "./dashboard/transaction-management/transaction.module";
+import {InvoiceModule} from "./dashboard/invoice-management/invoice.module";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +31,10 @@ import {LayoutsModule} from "./dashboard/layouts/layouts.module";
       autoPause: true,
     }),
     AuthModule,
-    LayoutsModule
+    AccountModule,
+    LayoutsModule,
+    TransactionModule,
+    InvoiceModule
   ],
   providers: [],
   bootstrap: [AppComponent]
