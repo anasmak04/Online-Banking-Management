@@ -16,6 +16,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 
 @Service
 @AllArgsConstructor
@@ -24,12 +26,38 @@ public class JwtAuthentificationFilter extends OncePerRequestFilter {
     private final JwtService jwtService;
     private final UserDetailsService userDetailsService;
 
+
+    private static final List<String> PUBLIC_ENDPOINTS = Arrays.asList(
+            "/api/auth/login",
+            "/api/auth/register",
+            "/api/auth/forgot-password",
+            "/api/auth/reset-password",
+            "/api/auth/verify-email",
+            "/api/auth/resend-verification",
+            "/api/user/all",
+            "/v3/api-docs",
+            "/v2/api-docs",
+            "/swagger-resources",
+            "/swagger-ui/",
+            "/webjars/",
+            "/error"
+    );
+
+    private boolean isPublicEndpoint(String servletPath) {
+        return PUBLIC_ENDPOINTS.stream().anyMatch(endpoint ->
+                servletPath.startsWith(endpoint) ||
+                        servletPath.matches(endpoint.replace("*", ".*"))
+        );
+    }
+
     @Override
     protected void doFilterInternal(@NonNull  HttpServletRequest request,@NonNull HttpServletResponse response,@NonNull FilterChain filterChain) throws ServletException, IOException {
-        if (request.getServletPath().contains("/api/auth/")) {
+        String servletPath = request.getServletPath();
+        if (isPublicEndpoint(servletPath)) {
             filterChain.doFilter(request, response);
             return;
         }
+
         final String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
         final String jwt;
         final String userEmail;
