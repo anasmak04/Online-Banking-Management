@@ -1,6 +1,6 @@
 import { createActionGroup, emptyProps, props } from "@ngrx/store";
-import { UserResponse } from "../models/user-response.interface";
-import {UserRequest} from "../models/user-request.interafce";
+import { UserResponse } from "../../models/user-response.interface";
+import {UserRequest} from "../../models/user-request.interafce";
 
 export const UserActions = createActionGroup({
   source: 'User',
