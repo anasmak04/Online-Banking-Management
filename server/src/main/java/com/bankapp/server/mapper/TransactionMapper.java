@@ -14,7 +14,7 @@ public interface TransactionMapper {
 
     TransactionMapper INSTANCE = Mappers.getMapper(TransactionMapper.class);
 
-    @Mapping(target = "accountId", source = "account.id")
+    @Mapping(target = "account", source = "account")
     @Mapping(target = "type", source = "type")
     TransactionDTO toDTO(Transaction transaction);
 

@@ -14,5 +14,5 @@ public class TransactionDTO {
     private Long id;
     private Double amount;
     private TransactionType type;
-    private Long accountId;
+    private AccountDTO account;
 }

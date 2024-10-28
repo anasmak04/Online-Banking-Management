@@ -1,10 +1,13 @@
 package com.bankapp.server.service;
 
 import com.bankapp.server.domain.dto.TransactionDTO;
+import com.bankapp.server.domain.entities.Account;
 import com.bankapp.server.domain.entities.Transaction;
 import com.bankapp.server.domain.request.TransactionRequest;
+import com.bankapp.server.exception.AccountNotFoundException;
 import com.bankapp.server.exception.TransactionNotFoundException;
 import com.bankapp.server.mapper.TransactionMapper;
+import com.bankapp.server.repository.AccountRepository;
 import com.bankapp.server.repository.TransactionRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,6 +20,7 @@ import java.util.Optional;
 public class PublicV1TransactionService {
 
     private final TransactionRepository transactionRepository;
+    private final AccountRepository accountRepository;
     private final TransactionMapper transactionMapper;
 
     public TransactionDTO save(TransactionRequest transactionRequest) {
