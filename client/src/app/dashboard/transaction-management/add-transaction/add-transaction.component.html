@@ -1,0 +1,43 @@
+<div
+  *ngIf="accounts$ | async as accounts"
+  class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"  (click)="cancel()">
+  <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-md" (click)="$event.stopPropagation()">
+    <span class="absolute top-3 right-4 cursor-pointer text-gray-500 hover:text-gray-800" (click)="cancel()">&times;</span>
+    <h2 class="text-2xl font-semibold mb-4">Add Transaction</h2>
+    <form [formGroup]="transactionForm" (ngSubmit)="onSubmit()">
+
+
+      <div class="mb-4">
+        <label for="amount" class="block text-sm font-medium text-gray-700">Amount Number:</label>
+        <input type="number" formControlName="amount" id="accountNumber" name="amount" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-2" />
+      </div>
+
+      <div class="mb-4">
+        <label for="type" class="block text-sm font-medium text-gray-700">Transaction Type:</label>
+        <select
+          formControlName="type"
+          id="type"
+          name="type"
+          required
+          class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-2">
+          <option value="" disabled selected>Select a balance type</option>
+          <option value="STANDARD">STANDARD</option>
+          <option value="INSTANT">INSTANT</option>
+        </select>
+      </div>
+
+
+      <div class="mb-4">
+        <label for="sourceAccountId" class="block text-sm font-medium text-gray-700">sourceAccountId:</label>
+        <input type="number" formControlName="sourceAccountId" id="sourceAccountId" name="sourceAccountId" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-2" />
+      </div>
+
+      <div class="mb-4">
+        <label for="destinationAccountId" class="block text-sm font-medium text-gray-700">sourceAccountId:</label>
+        <input type="number" formControlName="destinationAccountId" id="destinationAccountId" name="destinationAccountId" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-2" />
+      </div>
+
+      <button type="submit" class="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded">Submit</button>
+    </form>
+  </div>
+</div>

@@ -1,1 +1,68 @@
-<p>sidenav works!</p>
+<div class="min-h-screen bg-gray-100">
+  <div class="sidebar min-h-screen w-[3.35rem] overflow-hidden border-r hover:w-56 hover:bg-white hover:shadow-lg">
+    <div class="flex h-screen flex-col justify-between pt-2 pb-6">
+      <div>
+        <div class="w-max p-2.5">
+          <img src="https://tailus.io/images/logo.svg" class="w-32" alt="Logo">
+        </div>
+        <ul class="mt-6 space-y-2 tracking-wide">
+          <li class="min-w-max">
+            <a routerLink="/dashboard" aria-label="dashboard" class="relative flex items-center space-x-4 bg-gradient-to-r from-sky-600 to-cyan-400 px-4 py-3 text-white">
+              <svg class="-ml-1 h-6 w-6" viewBox="0 0 24 24" fill="none">
+                <path d="M6 8a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V8ZM6 15a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2v-1Z" class="fill-current text-cyan-400 dark:fill-slate-600"></path>
+                <path d="M13 8a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2V8Z" class="fill-current text-cyan-200 group-hover:text-cyan-300"></path>
+                <path d="M13 15a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-1Z" class="fill-current group-hover:text-sky-300"></path>
+              </svg>
+              <span class="-mr-1 font-medium">Dashboard</span>
+            </a>
+          </li>
+          <li class="min-w-max">
+            <a routerLink="/account" class="bg group flex items-center space-x-4 rounded-full px-4 py-3 text-gray-600">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+                <path class="fill-current text-gray-300 group-hover:text-cyan-300" d="M12 2L2 7h3v10h14V7h3L12 2zM6 9v2h12V9H6zm0 4v2h12v-2H6z" />
+                <path class="fill-current text-gray-600 group-hover:text-cyan-600" d="M5 21h14c1.104 0 2-.896 2-2V8H3v11c0 1.104.896 2 2 2z" />
+              </svg>
+              <span class="group-hover:text-gray-700">Accounts</span>
+            </a>
+          </li>
+          <li class="min-w-max">
+            <a routerLink="/transaction" class="group flex items-center space-x-4 rounded-md px-4 py-3 text-gray-600">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+                <path class="fill-current text-gray-600 group-hover:text-cyan-600" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-.59.36-1.33.07-1.68-.52l-1.07-1.73c-.35-.58-.12-1.33.52-1.68l1.1-.68c.49-.29 1.12-.13 1.41.35l.93 1.58c.29.49.13 1.12-.36 1.41l-1.2.72zm6.26-3.36l-1.12 1.12c-.39.39-1.02.39-1.42 0l-1.11-1.11c-.39-.39-.39-1.02 0-1.42l1.12-1.12c.39-.39 1.02-.39 1.42 0l1.11 1.11c.39.39.39 1.02 0 1.42zM17 12a5 5 0 00-5-5V7c4.14 0 7.5 3.36 7.5 7.5h-2z" />
+                <path class="fill-current text-gray-300 group-hover:text-cyan-300" d="M14 12a2 2 0 01-2-2V8h-2v2a4 4 0 004 4h2v-2h-2z" />
+              </svg>
+              <span class="group-hover:text-gray-700">Transaction</span>
+            </a>
+          </li>
+          <li class="min-w-max">
+            <a routerLink="/invoice" class="group flex items-center space-x-4 rounded-md px-4 py-3 text-gray-600">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+                <path class="fill-current text-gray-600 group-hover:text-cyan-600" d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm2 18H8v-2h8v2zm0-4H8v-2h8v2zm0-4H8V8h4V4h2v12z" />
+                <path class="fill-current text-gray-300 group-hover:text-cyan-300" d="M14 0l6 6h-4a2 2 0 01-2-2V0z" />
+              </svg>
+              <span class="group-hover:text-gray-700">Invoice</span>
+            </a>
+          </li>
+          <li class="min-w-max">
+            <a routerLink="/loan" class="group cursor-pointer flex items-center space-x-4 rounded-md px-4 py-3 text-gray-600">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+                <path class="fill-current text-gray-600 group-hover:text-cyan-600" d="M12 2L1 8h3v12h16V8h3L12 2zm0 12h-2v-2h2v2zm0-4h-2V8h2v2zm0-6h-2V4h2v2z" />
+                <path class="fill-current text-gray-300 group-hover:text-cyan-300" d="M15 16a3 3 0 11-6 0 3 3 0 016 0zM12 19a5 5 0 10-5-5 5 5 0 005 5z" />
+              </svg>
+              <span class="group-hover:text-gray-700">Loan</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="w-max -mb-3">
+        <a  class="group flex items-center space-x-4 rounded-md px-4 py-3 text-gray-600">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+            <path class="fill-current text-gray-600 group-hover:text-cyan-600" d="M19 14a2.002 2.002 0 00-1.394-1.892A6.968 6.968 0 0016 10V8a5 5 0 00-4.429-4.976A6.935 6.935 0 009.444 3 2 2 0 007 5a2 2 0 000 4c.293 0 .574-.086.831-.239A2 2 0 009 12h4a2 2 0 000-4H9a2.002 2.002 0 00-1.394-1.892A6.968 6.968 0 009 10v2a5 5 0 005 5 2 2 0 000-4h-1z" />
+            <path class="fill-current text-gray-300 group-hover:text-cyan-300" d="M11.99 20c-.553 0-1.098-.221-1.466-.635-.213-.252-.318-.582-.318-.885 0-.3.107-.646.318-.898.368-.41.913-.635 1.466-.635s1.098.221 1.466.635c.211.252.318.582.318.885 0 .3-.107.646-.318.898-.368.414-.913.635-1.466.635z" />
+          </svg>
+          <span class="group-hover:text-gray-700">Settings</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

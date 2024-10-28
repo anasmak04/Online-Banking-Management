@@ -1,15 +1,33 @@
-<div *ngIf="users$ | async as users; else loading">
-  <h2>User List</h2>
-  <ul>
-    <li *ngFor="let user of users">
-      <p><strong>ID:</strong> {{ user.id }}</p>
-      <p><strong>Username:</strong> {{ user.username }}</p>
-      <p><strong>Email:</strong> {{ user.email }}</p>
-      <p><strong>Role:</strong> {{ user.role || 'No role assigned' }}</p>
-      <hr>
-    </li>
-  </ul>
+<div *ngIf="users$ | async as users; else loading" class="relative overflow-x-auto  sm:rounded-lg p-6">
+  <h2 class="text-2xl font-bold mb-4">User List</h2>
+
+  <table class="min-w-full text-sm text-left bg-white shadow-md rounded">
+    <thead class="text-xs text-gray-700 uppercase bg-gray-200">
+    <tr>
+      <th class="py-2 px-4">ID</th>
+      <th class="py-2 px-4">First Name</th>
+      <th class="py-2 px-4">Last Name</th>
+      <th class="py-2 px-4">Email</th>
+      <th class="py-2 px-4">Role</th>
+      <th class="py-2 px-4">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of users" class="border-b even:bg-gray-50 odd:bg-white">
+      <td class="py-2 px-4">{{ user.id }}</td>
+      <td class="py-2 px-4">{{ user.firstName }}</td>
+      <td class="py-2 px-4">{{ user.lastName }}</td>
+      <td class="py-2 px-4">{{ user.email }}</td>
+      <td class="py-2 px-4">USER</td>
+      <td class="py-2 px-4 text-center">
+        <button class="bg-blue-500 hover:bg-blue-600 text-white py-1 px-3 rounded mr-2">Edit</button>
+        <button class="bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
 </div>
+
 <ng-template #loading>
-  <p>Loading users...</p>
+  <p class="p-6">Loading users...</p>
 </ng-template>

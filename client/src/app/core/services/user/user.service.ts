@@ -16,6 +16,10 @@ export class UserService {
     return this.http.get<UserResponse[]>(this.USER_API+"all");
   }
 
+  findByUser_name() : Observable<UserResponse[]>{
+    return this.http.get<UserResponse[]>(this.USER_API+"role/USER");
+  }
+
   findById(userId: number): Observable<UserResponse> {
     return this.http.get<UserResponse>(`${this.USER_API}/${userId}`);
   }

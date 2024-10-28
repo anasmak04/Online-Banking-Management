@@ -1,8 +1,9 @@
 export interface UserResponse {
     id: number;
-    username: string;
+    firstName: string;
+    lastName: string;
     email: string;
-    role?: string;
+    roles: string[];
     accountIds: number[] | null;
     billIds: number[] | null;
     loanIds: number[] | null;

@@ -1,0 +1,29 @@
+<div
+  *ngIf="users$ | async as users"
+  class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"  (click)="cancel()">
+  <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-md" (click)="$event.stopPropagation()">
+    <span class="absolute top-3 right-4 cursor-pointer text-gray-500 hover:text-gray-800" (click)="cancel()">&times;</span>
+    <h2 class="text-2xl font-semibold mb-4">Add Account</h2>
+    <form [formGroup]="accountForm" (ngSubmit)="onSubmit()">
+      <div class="mb-4">
+        <label for="accountNumber" class="block text-sm font-medium text-gray-700">Account Number:</label>
+        <input type="number" formControlName="formControlName" id="accountNumber" name="accountNumber" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-2" />
+      </div>
+
+      <div class="mb-4">
+        <label for="balance" class="block text-sm font-medium text-gray-700">Balance:</label>
+        <input type="number" formControlName="balance" id="balance" name="balance" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-2" />
+      </div>
+
+      <div class="mb-4">
+        <label for="userId" class="block text-sm font-medium text-gray-700">User:</label>
+        <select id="userId" formControlName="userId" name="userId" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-2">
+          <option value="" disabled selected>Select a user</option>
+          <option *ngFor="let user of users" [value]="user.id">{{ user.firstName }}</option>
+        </select>
+      </div>
+
+      <button type="submit" class="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded">Submit</button>
+    </form>
+  </div>
+</div>

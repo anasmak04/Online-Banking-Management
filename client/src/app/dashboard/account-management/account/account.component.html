@@ -1,1 +1,46 @@
-<p>account works!</p>
+<div class="min-h-screen bg-gray-100 flex">
+  <div class="sidebar min-h-screen w-[3.35rem] transition-all duration-300 overflow-hidden border-r hover:w-56 hover:bg-white hover:shadow-lg" style="position: fixed; z-index: 10;">
+    <app-sidenav></app-sidenav>
+  </div>
+
+  <div class="main-content flex-1 transition-all duration-300 ml-[2.35rem]  sm:ml-70 p-6" style="position: relative; z-index: 1;">
+    <div *ngIf="accounts$ | async as accounts" class="relative overflow-x-auto shadow-md sm:rounded-lg">
+      <h2 class="text-2xl font-bold mb-4">Account List</h2>
+      <button (click)="showModal = true" class="bg-gradient-to-r from-sky-600 to-cyan-400  text-white py-2 px-4 rounded mb-4">
+        Add Account
+      </button>
+
+      <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <tr>
+          <th scope="col" class="px-6 py-3">ID</th>
+          <th scope="col" class="px-6 py-3">Account Number</th>
+          <th scope="col" class="px-6 py-3">Balance</th>
+          <th scope="col" class="px-6 py-3">User Name</th>
+          <th scope="col" class="px-6 py-3">User LastName</th>
+          <th scope="col" class="px-6 py-3">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let account of accounts" class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+          <td class="px-6 py-4">{{ account.id }}</td>
+          <td class="px-6 py-4">{{ account.accountNumber }}</td>
+          <td class="px-6 py-4">{{ account.balance }}</td>
+          <td class="px-6 py-4">{{ account.user ? account.user.firstName : 'No User' }}</td>
+          <td class="px-6 py-4">{{ account.user ? account.user.lastName : 'No User' }}</td>
+          <td class="px-6 py-4">
+            <button class="bg-blue-500 hover:bg-blue-600 text-white py-1 px-3 rounded mr-2">Edit</button>
+            <button class="bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded">Delete</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <app-add-account
+      *ngIf="showModal"
+      (openPopup)="closePopup()"
+      (close)="openPopup()"
+    ></app-add-account>
+  </div>
+</div>

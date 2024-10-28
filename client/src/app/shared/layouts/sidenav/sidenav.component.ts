@@ -6,10 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sidenav.component.css']
 })
 export class SidenavComponent implements OnInit {
+  isOpen = true;
 
-  constructor() { }
+  toggleSidenav() {
+    this.isOpen = !this.isOpen;
+  }
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
 
 }

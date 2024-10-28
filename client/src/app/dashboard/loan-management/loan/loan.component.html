@@ -1,0 +1,41 @@
+<div *ngIf="loans$ | async as loans" class="relative overflow-x-auto  sm:rounded-lg p-6">
+  <h2 class="text-2xl font-bold mb-4">Transaction List</h2>
+
+  <button (click)="showModal = true" class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded mb-4">
+    Add Invoice
+  </button>
+
+  <table class="min-w-full text-sm text-left bg-white shadoz-md rounded">
+    <thead class="text-xs text-gray-700 uppercase bg-gray-200">
+    <tr>
+      <th class="py-2 px-4">ID</th>
+      <th class="py-2 px-4">Amount</th>
+      <th class="py-2 px-4">interest Rate</th>
+      <th class="py-2 px-4">Status</th>
+      <th class="py-2 px-4">User First Name</th>
+      <th class="py-2 px-4">User Last Name</th>
+      <th class="py-2 px-4">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let loan of loans" class="border-b even:bg-gray-50 odd:bg-white">
+      <td class="py-2 px-4">{{ loan.id }}</td>
+      <td class="py-2 px-4">{{ loan.amount }}</td>
+      <td class="py-2 px-4">{{ loan.interestRate }}</td>
+      <td class="py-2 px-4">{{ loan.approved }}</td>
+      <td class="py-2 px-4">{{ loan.user.firstName }}</td>
+      <td class="py-2 px-4">{{ loan.user.lastName }}</td>
+      <td class="py-2 px-4 text-center">
+        <button class="bg-blue-500 hover:bg-blue-600 text-white py-1 px-3 rounded mr-2">Edit</button>
+        <button class="bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<app-add-loan
+  *ngIf="showModal"
+  (openPopup)="closePopup()"
+  (close)="openPopup()"
+></app-add-loan>

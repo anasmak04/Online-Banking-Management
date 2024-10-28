@@ -9,6 +9,10 @@ export const UserActions = createActionGroup({
     'Get All Users Success': props<{ users: UserResponse[] }>(),
     'Get All Users Failure': props<{ error: string }>(),
 
+    'Get All Users With Role User': emptyProps(),
+    'Get All Users With Role User Success': props<{ usersByRoleUser: UserResponse[] }>(),
+    'Get All Users With Role User Failure': props<{ error: string }>(),
+
     'Add User': props<{ userRequest: UserRequest }>(),
     'Add User Success': props<{ userResponse: UserResponse }>(),
     'Add User Failure': props<{ error: string }>(),

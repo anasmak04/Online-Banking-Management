@@ -20,6 +20,19 @@ export class UserEffects {
     )
   );
 
+  LoadUsersWithRoleUser$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(UserActions.getAllUsersWithRoleUser),
+      switchMap(() =>
+        this.userService.findByUser_name().pipe(
+          map((usersByRoleUser) => UserActions.getAllUsersWithRoleUserSuccess({ usersByRoleUser })),
+          catchError((error) => of(UserActions.getAllUsersWithRoleUserFailure({ error: error.message })))
+        )
+      )
+    )
+  );
+
+
   AddUser$ = createEffect(() =>
     this.actions$.pipe(
       ofType(UserActions.addUser),

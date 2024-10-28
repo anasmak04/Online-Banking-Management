@@ -4,6 +4,7 @@ import { UserActions } from './user.actions';
 
 const initialState: UserState = {
   users: [],
+  usersByRoleUser: [],
   error: null,
 };
 
@@ -24,6 +25,21 @@ const userFeature = createFeature({
       ...state,
       error,
     })),
+
+    on(UserActions.getAllUsersWithRoleUser, (state) => ({
+      ...state,
+      error: null,
+    })),
+    on(UserActions.getAllUsersWithRoleUserSuccess, (state,  actions ) => ({
+      ...state,
+      usersByRoleUser: actions.usersByRoleUser,
+      error: null,
+    })),
+    on(UserActions.getAllUsersWithRoleUserFailure, (state, { error }) => ({
+      ...state,
+      error,
+    })),
+
     on(UserActions.addUser, (state) => ({
       ...state,
       error: null,
@@ -63,4 +79,4 @@ const userFeature = createFeature({
   ),
 });
 
-export const { name: usersFeatureKey, reducer: usersReducer, selectUsers } = userFeature;
+export const { name: usersFeatureKey, reducer: usersReducer, selectUsers, selectUsersByRoleUser } = userFeature;
