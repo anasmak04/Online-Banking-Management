@@ -14,11 +14,11 @@ import java.util.List;
 public interface LoanMapper {
     LoanMapper INSTANCE = Mappers.getMapper(LoanMapper.class);
 
-    @Mapping(target = "userId", source = "user.id")
+    @Mapping(target = "user", source = "user")
     LoanDTO toDTO(Loan loan);
 
     @Mapping(target = "id", ignore = true)
-    @Mapping(target = "user", ignore = true)
+    @Mapping(target = "user.id", source = "userId")
     Loan toEntity(LoanRequest loanRequest);
 
     List<LoanDTO> toDTOList(List<Loan> loans);

@@ -14,14 +14,12 @@ public interface InvoiceMapper {
 
     InvoiceMapper INSTANCE = Mappers.getMapper(InvoiceMapper.class);
 
-    @Mapping(target = "userId", source = "user.id")
+    @Mapping(target = "user", source = "user")
     InvoiceDTO toDTO(Invoice invoice);
 
-
     @Mapping(target = "id", ignore = true)
-    @Mapping(target = "user", ignore = true)
+    @Mapping(target = "user.id", source = "userId")
     Invoice toEntity(InvoiceRequest invoiceRequest);
 
-    List<InvoiceDTO> toDTOList(List<Invoice> bills);
-
+    List<InvoiceDTO> toDTOList(List<Invoice> invoices);
 }

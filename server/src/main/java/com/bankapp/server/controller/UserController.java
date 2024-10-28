@@ -35,6 +35,12 @@ public class UserController {
         return publicV1UserService.findAll();
     }
 
+    @GetMapping("/role/{roleName}")
+    public List<UserDTO> findByUserRole(@PathVariable String roleName) {
+        return publicV1UserService.findByUserRole(roleName);
+    }
+
+
     @DeleteMapping("/delete/{id}")
     public void delete(@PathVariable final Long id) {
         publicV1UserService.delete(id);

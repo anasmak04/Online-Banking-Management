@@ -27,7 +27,10 @@ public class SecurityConfig {
                                 "/api/user/**",
                                 "/api/auth/**",
                                 "/api/account/**",
-                                "/api/transaction/**"
+                                "/api/transaction/**",
+                                "/api/invoice/**",
+                                "/api/loan/**",
+                                "/api/user/role/**"
                         )
                         .permitAll()
                         .anyRequest().authenticated()

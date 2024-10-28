@@ -1,6 +1,5 @@
 package com.bankapp.server.domain.entities;
 
-import com.bankapp.server.domain.enums.TransactionStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

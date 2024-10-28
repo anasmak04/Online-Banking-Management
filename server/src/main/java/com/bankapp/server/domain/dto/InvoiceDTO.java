@@ -1,5 +1,6 @@
 package com.bankapp.server.domain.dto;
 
+import com.bankapp.server.domain.enums.InvoiceStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,5 +16,6 @@ public class InvoiceDTO {
     private Long id;
     private Double amount;
     private Date dueDate;
-    private Long userId;
+    private InvoiceStatus status;
+    private UserDTO user;
 }

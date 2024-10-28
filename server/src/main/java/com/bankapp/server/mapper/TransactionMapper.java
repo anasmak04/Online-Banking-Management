@@ -14,13 +14,13 @@ public interface TransactionMapper {
 
     TransactionMapper INSTANCE = Mappers.getMapper(TransactionMapper.class);
 
-    @Mapping(target = "account", source = "account")
-    @Mapping(target = "type", source = "type")
+    @Mapping(target = "sourceAccount", source = "sourceAccount")
+    @Mapping(target = "destinationAccount", source = "destinationAccount")
     TransactionDTO toDTO(Transaction transaction);
 
     @Mapping(target = "id", ignore = true)
-    @Mapping(target = "account.id", source = "accountId")
-    @Mapping(target = "type", source = "type")
+    @Mapping(target = "sourceAccount.id", source = "sourceAccountId")
+    @Mapping(target = "destinationAccount.id", source = "destinationAccountId")
     Transaction toEntity(TransactionRequest transactionRequest);
 
     List<TransactionDTO> toDTOList(List<Transaction> transactions);

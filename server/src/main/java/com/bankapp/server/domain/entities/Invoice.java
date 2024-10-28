@@ -1,5 +1,6 @@
 package com.bankapp.server.domain.entities;
 
+import com.bankapp.server.domain.enums.InvoiceStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,6 +21,10 @@ public class Invoice {
     private Long id;
     private Double amount;
     private Date dueDate;
+
+    @Enumerated(EnumType.STRING)
+    private InvoiceStatus status;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;

@@ -20,6 +20,10 @@ public class TransactionRequest {
     @NotNull(message = "Type cannot be null")
     private TransactionType type;
 
-    @NotNull(message = "Account ID cannot be null")
-    private Long accountId;
+    @NotNull(message = "source Account Id ID cannot be null")
+    private Long sourceAccountId;
+
+
+    @NotNull(message = "destination Account Id ID cannot be null")
+    private Long destinationAccountId;
 }

@@ -117,4 +117,9 @@ public class PublicV1UserService {
     public Optional<UserDTO> findById(Long id) {
         return userRepository.findById(id).map(userMapper::toDTO);
     }
+
+    public List<UserDTO> findByUserRole(String roleName) {
+        return userMapper.toDTOList(userRepository.findByRoles_Name(roleName));
+    }
+
 }
